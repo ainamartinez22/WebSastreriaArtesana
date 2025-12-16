@@ -11,7 +11,10 @@ const router = createRouter({
     { path: '/blog', component: Blog },
     { path: '/galeria', component: Gallery },
     { path: '/contacto', component: Contact },
-  ]
+    ],
+    scrollBehavior() {
+        return { top: 0 }
+      }
 })
 
 export default router

@@ -3,8 +3,8 @@
     --color-text: #1e1e1e;
     --color-secondary-text: #5f5f5f;
   
-    --color-accent: #b08b60;
-    --color-accent-dark: #8c6a45;
+    --color-accent: #6569ba;
+    --color-accent-dark: #45468c;
   
     --color-white: #ffffff;
     --color-border: #e0e0e0;
@@ -39,7 +39,7 @@
   }
   
   a {
-    color: var(--color-accent);
+    color: var(--color-text);
     text-decoration: none;
   }
   

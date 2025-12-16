@@ -13,7 +13,9 @@
 
     <!-- BLOG -->
     <section id="blog" class="section section-light">
-      <h2 class="section-title">Nuestro Blog</h2>
+      <h2 class="section-title">
+        <a href="#blog">Blog</a>
+      </h2>
       <div class="section-content">
         <p>
           Consejos sobre estilo, tejidos y el valor de la confección artesanal.
@@ -23,19 +25,37 @@
 
     <!-- GALERÍA -->
     <section id="galeria" class="section section-dark">
-      <h2 class="section-title">Galería de Telas</h2>
+      <h2 class="section-title">
+        <a href="#galeria">Galería</a>
+      </h2>
       <div class="section-content">
-        <!-- aquí va tu galería / instagram -->
+        <p>
+          Una selección de telas de alta calidad y algunos de nuestros
+          trabajos finalizados, realizados a medida para cada cliente.
+        </p>
       </div>
     </section>
 
     <!-- CONTACTO -->
     <section id="contacto" class="section section-light">
-      <h2 class="section-title">Contacto</h2>
+      <h2 class="section-title">
+        <a href="#contacto">Contacto</a>
+      </h2>
       <div class="section-content">
-        <!-- aquí va el mapa + formulario -->
+        <p>
+          Visítanos en nuestro taller o contáctanos para pedir cita,
+          resolver dudas o comentar tu idea.
+        </p>
       </div>
     </section>
 
   </main>
 </template>
+
+<script>
+export default {
+  name: "Home",
+};
+</script>
+
+<style scoped src="../assets/home.css"></style>
