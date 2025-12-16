@@ -1,10 +1,7 @@
 .hero {
   min-height: 85vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("https://media.istockphoto.com/id/1190043570/es/foto/feliz-fotograf%C3%ADa-de-la-boda-de-los-novios-en-la-ceremonia-de-la-boda-tradici%C3%B3n-nupcial-rociada.jpg?s=1024x1024&w=is&k=20&c=iyouU5qCr5aSktpLUuzKxEeNzHFSufTJ3WLZf5odQwc=");
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(180deg, #121212 0%, #1c1c1c 100%); /* degradado oscuro */
+  /* Si quieres solo negro sólido: background-color: #121212; */
 
   display: flex;
   align-items: center;
@@ -14,7 +11,7 @@
 }
 
 .hero h1 {
-  color: white;
+  color: #ffffff;
   font-size: 3.2rem;
   margin-bottom: 1rem;
 }
