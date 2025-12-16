@@ -1,0 +1,27 @@
+.hero {
+  min-height: 85vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("https://media.istockphoto.com/id/1190043570/es/foto/feliz-fotograf%C3%ADa-de-la-boda-de-los-novios-en-la-ceremonia-de-la-boda-tradici%C3%B3n-nupcial-rociada.jpg?s=1024x1024&w=is&k=20&c=iyouU5qCr5aSktpLUuzKxEeNzHFSufTJ3WLZf5odQwc=");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 3.2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: #eaeaea;
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
