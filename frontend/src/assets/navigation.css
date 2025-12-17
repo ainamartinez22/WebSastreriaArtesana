@@ -1,21 +1,131 @@
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-    padding: 1rem 2.5rem;
+/* HEADER */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff;
+}
+
+.toolbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.logo span {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #555555;
+  margin-top: 0.2rem;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background-color: #000000;
+  transition: width 0.2s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* BOTÓN HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* DESTACAR EL LINK ACTUAL */
+.active-link {
+  font-weight: 700;
+  color: #3f51b5; /* color de resaltado azul elegante */
+}
+
+.nav a.active-link::after {
+  width: 100%; /* subrayado completo del link activo */
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 500px) {
+  .toolbar-inner {
+    padding: 0.5rem 1rem;
   }
-  
-  nav a {
-    margin-right: 2rem;
-    font-weight: 500;
-    color: var(--color-text);
-    transition: color 0.3s ease;
+
+  /* Reducir tamaño del logo */
+  .logo {
+    font-size: 1.1rem;
+    max-width: 190px;
   }
-  
-  nav a:hover,
-  nav a.router-link-active {
-    color: var(--color-accent);
+
+  .logo span {
+    font-size: 0.5rem;
   }
-  
+
+  /* Ajustar nav a oculto por defecto */
+  .nav {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background: #ffffff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: 1rem 2rem;
+    border-top: 1px solid #ccc;
+  }
+
+  /* Mostrar nav si abierto */
+  .nav.open {
+    display: flex;
+  }
+
+  /* Mostrar botón hamburger */
+  .menu-toggle {
+    display: block;
+    color: #000;
+  }
+
+  .nav a {
+    font-size: 0.85rem;
+  }
+}
