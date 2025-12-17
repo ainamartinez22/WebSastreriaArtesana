@@ -1,7 +1,7 @@
 <template>
   <section class="contact">
     <!-- FORMULARIO -->
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="submitForm" >
       <div class="form-group">
         <label for="name">Nombre</label>
         <input
@@ -35,121 +35,78 @@
         ></textarea>
       </div>
 
-      <button type="submit">Enviar</button>
+      <button class="send-button" type="submit">Enviar</button>
     </form>
+
+    <!-- ALERTAS -->
+    <div v-if="alert.message" :class="['alert', alert.type]">
+      {{ alert.message }}
+    </div>
 
     <div class="contact-info">
       <p class="info">
-        📍 Carrer del Canigó, Moià<br />
+        📍 Carrer del Canigó, Moià 08180 (Barcelona)<br />
         📞 +34 600 000 000<br />
         🕒 L–V: 9:00 – 19:00
       </p>
 
       <!-- MAPA -->
-      <iframe
-        src="https://www.google.com/maps?q=Carrer+Canigo+Moia&output=embed"
-        width="100%"
-        height="300"
-        style="border: 0; border-radius: 8px"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      >
-      </iframe>
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2691.208525020964!2d2.091414075556446!3d41.8092974697199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4e6c5137ce49b%3A0x99fc806946edea1b!2sCarrer%20del%20Canig%C3%B3%2C%20El%20Moian%C3%A8s%2C%2008180%20Moi%C3%A0%2C%20Barcelona!5e1!3m2!1sca!2ses!4v1765964221620!5m2!1sca!2ses"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </div>
   </section>
 </template>
 <script>
+import emailjs from "@emailjs/browser";
+
+emailjs.init("9S6nxdltzFu3ygbdS");
+
 export default {
   data() {
     return {
       form: {
         name: "",
         email: "",
-        message: "",
+        message: ""
       },
+      alert: { message: "", type: "" },
     };
   },
   methods: {
-    submitForm() {
-      alert(
-        `Mensaje enviado:\n${this.form.name}\n${this.form.email}\n${this.form.message}`
-      );
-      // Aquí puedes conectar con tu backend Express para enviar email o guardar datos
+    async submitForm() {
+      emailjs
+        .send("service_0tdh3mo", "template_4aq2axm", {
+          name: this.form.name,
+          email: this.form.email,
+          message: this.form.message,
+        })
+        .then(() => {
+          this.showAlert("Email enviado con éxito!", "success");
+          this.form.name = "";
+          this.form.email = "";
+          this.form.message = "";
+        })
+        .catch((err) => {
+          this.showAlert("Error al enviar el email: " + err.text, "error");
+        });
+    },
+    showAlert(message, type) {
+      this.alert.message = message;
+      this.alert.type = type;
+      setTimeout(() => {
+        this.alert.message = "";
+        this.alert.type = "";
+      }, 4000); // desaparece tras 4 segundos
     },
   },
 };
+
 </script>
-
-
-<style scoped>
-.info{
-  margin-bottom: 20px;
-  color:white;
-}
-.contact-info{
-  padding-top: 20px;
-}
-.contact {
-  max-width: 600px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background-color: #1c1c1c; /* fondo oscuro elegante */
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  color: #ffffff;
-}
-
-.contact h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background-color: #2a2a2a;
-  color: #fff;
-  font-size: 1rem;
-  transition: all 0.2s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #3f51b5; /* color azul elegante al enfocar */
-  box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
-  background-color: #222;
-}
-
-button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #3f51b5; /* azul destacado */
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 500;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-button:hover {
-  background-color: #303f9f;
-  box-shadow: 0 4px 10px rgba(63, 81, 181, 0.4);
-}
-</style>
+<style scoped src="../assets/contact.css"></style>
