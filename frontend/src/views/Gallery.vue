@@ -37,13 +37,25 @@
 
         <a
           class="provider-card"
-          href="https://www.dormeuil.com"
+          href="https://www.gratacos.com/"
           target="_blank"
           rel="noopener"
         >
           <h3>Gratacós</h3>
           <p>
             Las mejores materias y tejidos que acaban dando forma a las ideas de otros. Un referente para las grandes firmas del diseño y la Alta Costura
+          </p>
+        </a>
+
+        <a
+          class="provider-card"
+          href="https://www.bracons.com/"
+          target="_blank"
+          rel="noopener"
+        >
+          <h3>J. B. Bracons S.L</h3>
+          <p>
+            Un almacén de tejidos especializado en alta sastrería, camisería y vestuario para cine, teatro y televisión.
           </p>
         </a>
       </div>
