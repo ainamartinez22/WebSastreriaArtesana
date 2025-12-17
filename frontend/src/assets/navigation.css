@@ -51,6 +51,7 @@
   position: relative;
 }
 
+/* Subrayado en hover */
 .nav a::after {
   content: "";
   position: absolute;
@@ -66,23 +67,46 @@
   width: 100%;
 }
 
-/* BOTÓN HAMBURGER */
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-/* DESTACAR EL LINK ACTUAL */
+/* Link activo */
 .active-link {
   font-weight: 700;
-  color: #3f51b5; /* color de resaltado azul elegante */
+  color: #3f51b5;
 }
 
 .nav a.active-link::after {
-  width: 100%; /* subrayado completo del link activo */
+  width: 100%;
 }
+
+/* BOTÓN HAMBURGER */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  width: 30px;
+  height: 22px;
+  z-index: 110; /* por encima del nav */
+}
+
+.menu-toggle span {
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #000;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 9px; }
+.menu-toggle span:nth-child(3) { top: 18px; }
+
+/* Animación botón abierto */
+.menu-toggle.active span:nth-child(1) { transform: rotate(45deg); top: 9px; }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg); top: 9px; }
 
 /* RESPONSIVE */
 @media screen and (max-width: 500px) {
@@ -90,17 +114,15 @@
     padding: 0.5rem 1rem;
   }
 
-  /* Reducir tamaño del logo */
   .logo {
     font-size: 1.1rem;
     max-width: 190px;
   }
 
   .logo span {
-    font-size: 0.5rem;
+    font-size: 0.55rem;
   }
 
-  /* Ajustar nav a oculto por defecto */
   .nav {
     display: none;
     flex-direction: column;
@@ -108,24 +130,26 @@
     background: #ffffff;
     position: absolute;
     top: 100%;
-    right: 0;
     left: 0;
+    right: 0;
     padding: 1rem 2rem;
     border-top: 1px solid #ccc;
   }
 
-  /* Mostrar nav si abierto */
   .nav.open {
     display: flex;
   }
 
-  /* Mostrar botón hamburger */
   .menu-toggle {
     display: block;
-    color: #000;
   }
 
   .nav a {
     font-size: 0.85rem;
+    color: #000; /* importante para que no quede azul al abrir */
+  }
+
+  .nav a.active-link::after {
+    background-color: #3f51b5;
   }
 }
