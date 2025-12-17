@@ -4,7 +4,7 @@
     <!-- HERO -->
     <section class="hero">
       <div>
-        <h1>Sastrería Artesanal</h1>
+        <h1>Sastrería Artesanal <br/> Mabel Quiroga</h1>
         <p>
           Trajes a medida y selección de telas premium con atención personalizada
         </p>
@@ -18,7 +18,7 @@
       </h2>
       <div class="section-content">
         <p>
-          Consejos sobre estilo, tejidos y el valor de la confección artesanal.
+          Te mostramos cómo trabajamos, compartimos consejos y enseñamos algunos de nuestros últimos encargos.
         </p>
       </div>
     </section>
